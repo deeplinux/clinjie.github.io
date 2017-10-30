@@ -1,0 +1,1015 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="临街小站" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content=".">
+<meta property="og:type" content="article">
+<meta property="og:title" content="numpy笔记">
+<meta property="og:url" content="http://peihao.space/2017/10/30/numpy-notes/index.html">
+<meta property="og:site_name" content="临街小站">
+<meta property="og:description" content=".">
+<meta property="og:updated_time" content="2017-10-30T08:29:45.688Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="numpy笔记">
+<meta name="twitter:description" content=".">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://peihao.space/2017/10/30/numpy-notes/"/>
+
+
+
+
+
+  <title> numpy笔记 | 临街小站 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?07ad8ea412265d4e0ce713ba2e3cd40a";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">临街小站</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photos" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+
+	  </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://peihao.space/2017/10/30/numpy-notes/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="clinjie">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/img/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="临街小站">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="临街小站" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                numpy笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2017-10-30T16:01:44+08:00">
+                2017-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/10/30/numpy-notes/" class="leancloud_visitors" data-flag-title="numpy笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+		
+		
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>.</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">np.array()<span class="comment">#创建矩阵</span></span><br><span class="line"></span><br><span class="line">np.zeros((shape)) <span class="comment">#根据形状创建矩阵</span></span><br><span class="line"></span><br><span class="line">np.random.rand(<span class="number">3</span>,<span class="number">4</span>)<span class="comment">#创建3*4的随机值矩阵</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">例如创建两个矩阵，分别是<span class="number">3</span>*<span class="number">4</span>和<span class="number">4</span>*<span class="number">4</span>:</span><br><span class="line"></span><br><span class="line">d1=np.random.rand(<span class="number">2</span>,<span class="number">4</span>)<span class="comment">#假设值为[[1,2,3,4],[5,6,7,8]]</span></span><br><span class="line">d2=np.random.rand(<span class="number">1</span>*<span class="number">4</span>)<span class="comment">#假设值为[[4,4,4,4]]</span></span><br><span class="line"></span><br><span class="line">d1[<span class="number">0</span>]<span class="comment">#输出[1,2,3,4]</span></span><br><span class="line"></span><br><span class="line">d1-d2<span class="comment">#输出[[-3,-2,-1,0],[1,2,3,4]]</span></span><br><span class="line"></span><br><span class="line">np.square<span class="comment">#矩阵的平方运算，返回的还是矩阵形式</span></span><br><span class="line"></span><br><span class="line">np.sum(axis=n，keepdims=<span class="keyword">True</span>)<span class="comment">#矩阵累加运算。axis是进行运算的维度选择，例如axis=2，则就是在shape中的第3个维度进行累加。如果keepdims=True，则不会进行降维度，否则会降低axis上的维度</span></span><br><span class="line"></span><br><span class="line">np.dot<span class="comment">#矩阵乘法，不是对应元素的乘法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#假设d1和d2都是相同shape，此时</span></span><br><span class="line">d1*d2<span class="comment">#就是对应元素的惩罚</span></span><br><span class="line"></span><br><span class="line">np.multiply <span class="comment">#乘法，两个参数，第一个参数是矩阵，之后的参数是数值。矩阵的每个元素分别跟这个数值进行相乘，返回的矩阵shape不变</span></span><br><span class="line"></span><br><span class="line">np.arange(<span class="number">12</span>)<span class="comment">#返回返回一个一维的矩阵[0,1,2,3,...,11]</span></span><br><span class="line"></span><br><span class="line">np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>,<span class="number">4</span>)<span class="comment">#返回一个3*4矩阵</span></span><br><span class="line"></span><br><span class="line">np.argsort(axis)<span class="comment"># 根据axis进行排序，返回的矩阵中填充的是index，默认是升序列</span></span><br><span class="line"></span><br><span class="line">np.bincount<span class="comment"># 计数器，参数是一个array，非负，例如array=[1,2,3,3,8],则返回一个长度为9的array，在0到9数值上计数  结果为[0,1,1,2,0,0,0,0,1]</span></span><br><span class="line"></span><br><span class="line">np.argmax(axis)<span class="comment"># 选择最大数值的index返回，如果使用了axis参数，可以对轴上的数值进行选择，返回的是矩阵。例如：d=np.arange(6) d[1]=8 此时d=[0,8,2,3,4,5]  np.argmax(d)返回数值1也就是8的index；现在看使用axis, d=np.arange(6).reshape(2,3) d[0][2]=8  此时d=[[0,1,8],[3,4,5]]  那么np.argmax(d)=[1,1,0]，也就是在第一个唯独上，d[*][0]中*为1最大，d[*][2]中*=0最大 为8</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.array_split(array,index)<span class="comment">#对array进行分片，可以直接输入数值进行等分，也可以通过index进行非等分。返回的是array的集合</span></span><br><span class="line"><span class="comment">#d=np.arange(9); np.array_split(d,3),输出[array([0,1,2]),array([3,4,5]),array([6,7,8])]</span></span><br><span class="line"><span class="comment">#非等分：  np.array_split(d,[2,5,7,100])按照index进行分解，[array([0,1]),array(2,3,4),array(5,6),array(7,8)]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.vstack()<span class="comment">#将相同尺寸的array合并成一个array  d=np.arange(12).reshape(3,4)  d=np.vstack(d[:1]+d[2:])  返回array([[0,1,2,3],[8,9,10,11]])</span></span><br><span class="line">np.hstack()<span class="comment">#将相同尺寸的array展开成一个array  d=np.arange(12).reshape(3,4)  d=np.hstack(d[:1]+d[2:])  返回array([0,1,2,3,8,9,10,11])</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.random.choice(a,num,replace,p)<span class="comment">#从a中挑选出来num个数值出来，其中replace=True表示可以可以有相同的数值，p的长度与a相同，表示这些数被挑选出来的概率</span></span><br><span class="line"></span><br><span class="line">np.mean(a,axis)<span class="comment">#将矩阵a的每个元素相加除以元素个数，求平均值： a=np.array([[1,2],[3,4]])  np.mean(a)返回2.5  np.mean(a,axis=0)返回array([2,3])</span></span><br><span class="line"><span class="comment">#使用技巧  可以计算两个array的相同程度。 a-np.array([1,2,3,4,5])  b=np.array([1,2,3,1,2])  np.mean(a==b)表示对应元素相似率，返回0.4</span></span><br><span class="line"></span><br><span class="line">np.random.randn(d1,d2,d3)<span class="comment">#随机返回填充以标准正态分布，d1,d2,d3是shape的参数</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Numpy广播机制：</span><br><span class="line"></span><br><span class="line">np.empty_like(x)<span class="comment">#创建一个与x.shape相同的matrix，但是empty</span></span><br><span class="line"></span><br><span class="line">np.tile(a,num)<span class="comment">#重复a矩阵num次，或者按照num的形式进行扩充  a=np.array([[1,2,3]])  np.tile(a,2) 返回[[1,2,3,1,2,3]]  np.tile(a,(2,1))在第一个维度上复制两次，第二个维度复制两次   [[1,2,3,1,2,3],[1,2,3,1,2,3]]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a=np.arange(<span class="number">12</span>).reshape([<span class="number">3</span>,<span class="number">4</span>])  <span class="comment"># a=[[0,1,2,3],[4,5,6,7],[8,9,10,11]]</span></span><br><span class="line">a[:<span class="number">2</span>]<span class="comment"># 输出从a[0:*]到a[1:*]  np.array([[0,1,2,3],[4,5,6,7]])</span></span><br><span class="line">a[:,<span class="number">2</span>] <span class="comment">#输出第二个维度上index为2的元素  np.array([2,6,10])</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.max(np.array)<span class="comment">#在列表中找到最大的那个</span></span><br><span class="line">np.maximum(np.array,value)<span class="comment">#列表中的元素分别与value进行对比，如过value的值大，则原来的元素将会被替换成为value</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">一些技巧：</span><br><span class="line"></span><br><span class="line">a=np.random.randn(<span class="number">10</span>,<span class="number">5</span>)返回一个标准正态分布的随机矩阵，shape=[<span class="number">10</span>,<span class="number">5</span>]</span><br><span class="line">a[[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],[<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">1</span>]]  <span class="comment">#返回的是a[0,2] a[1,3] a[2,1] a[3,4] a[4,1]</span></span><br><span class="line">a[np.arange(<span class="number">5</span>),[<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">1</span>]]<span class="comment">#返回的结果与上面的相同。这里要注意的是第一个尺寸要与第二个尺寸相同</span></span><br><span class="line">a[a&gt;<span class="number">1</span>]=<span class="number">1</span><span class="comment">#将原本a中的所有大于1的元素都设置为1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.asarray()<span class="comment">#将列表转换成为np.array</span></span><br><span class="line"><span class="comment">#a=[[1,2],[3,4]]  np.asarray(a)  返回np.array([[1,2],[3,4]])</span></span><br><span class="line"><span class="comment">#np.asarray(a,'i') 将元素转换成int形式</span></span><br><span class="line"><span class="comment">#np.asarray(a,'f') 将元素转换成float形式</span></span><br><span class="line"><span class="comment">#a=np.asarray(a)  np.asarray(a&gt;2,'i') 将矩阵中&gt;2的元素值设置为1，其余设置为0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a=np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">x=np.random.rand(*a.shape)</span><br><span class="line"><span class="comment">#返回一个3*4的随机矩阵，效果等同于np.random.rand(3,4)，rand方法参数不接受tuple元组</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.var <span class="comment">#方差  数值为： （sum(x_i-x_mean)^2）/N</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.pad</span><br><span class="line"><span class="comment">#填充  a=[1,2,3,4]，np.pad(a,(2,3),'constant',constant_value(4,6))表示分别在前后填充，4和6，,去填充2个，6填充3个，返回[4,4,1,2,3,4,6,6,6]</span></span><br><span class="line"><span class="comment">#a=[[1,2],[3,4]] np.pad(a,((3,2),(2,3)),'constant',constant_value=1)使用1填充，在上下分别填充3行和两行，左右分别填充2列和3列</span></span><br><span class="line"><span class="string">"""</span><br><span class="line">array([[1, 1, 1, 1, 1, 1, 1],</span><br><span class="line">          [1, 1, 1, 1, 1, 1, 1],</span><br><span class="line">          [1, 1, 1, 1, 1, 1, 1],</span><br><span class="line">          [1, 1, 1, 2, 1, 1, 1],</span><br><span class="line">          [1, 1, 3, 4, 1, 1, 1],</span><br><span class="line">          [1, 1, 1, 1, 1, 1, 1],</span><br><span class="line">          [1, 1, 1, 1, 1, 1, 1]])</span><br><span class="line">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.prod</span><br><span class="line"><span class="comment">#矩阵逐个相乘，</span></span><br><span class="line">np.prod([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])<span class="comment">#返回1*2*3*4=24  </span></span><br><span class="line">np.prod([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]],axis=<span class="number">1</span>)<span class="comment">#在第二个维度上相乘 [[2],[12]]</span></span><br><span class="line">np.prof([<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>])<span class="comment">#返回2*3*4*5*6=720</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np,tanh<span class="comment">#双曲正切函数。 值域：(-1,1)。y=tanh x是一个奇函数，其函数图像为过原点并且穿越Ⅰ、Ⅲ象限的严格单调递增曲线，其图像被限制在两水平渐近线y=1和y=-1之间。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.linspace(start,end,num)  <span class="comment"># 间隔采样，np.linspace(-2,2,10)返回</span></span><br><span class="line"><span class="string">'''array([-2.        , -1.55555556, -1.11111111, -0.66666667, -0.22222222,</span><br><span class="line">        0.22222222,  0.66666667,  1.11111111,  1.55555556,  2.        ])'''</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.repeat(a,num,axis)<span class="comment">#矩阵元素复制，a=np,arange(1,5).reshape(2,2) a=[[1,2],[3,4]] np.repeat(a,2)返回一个一维向量，原来的结构发生变化  [1,1,2,2,3,3,4,4]  np.repeat(a,2,axis=0) 返回[[1,2],[1,2],[3,4],[3,4]];np.repeat(a,2,axis=1)返回[[1,1,2,2],[3,3,4,4]]</span></span><br><span class="line">np.tile(a,(axis0_times,axis1_times))<span class="comment">#元素复制，第二个参数指定对应轴上复制的次数，例如a=np.arange(1,5).reshape(2,2)；a=[[1,2],[3,4]] ，np.tile(a,2)，相当于np.tile(a,(1,2))返回[[1,2,1,2],[3,4,3,4]],np.tile(a,(2,1))返回[[1,2],[3,4],[1,2],[3,4]]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np. identify(num)<span class="comment">#方阵</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">enumrrate()<span class="comment">#python内建的枚举函数，对于一个Iterable的对象（列表，字符串），enumerate将其组成一个索引序列，利用他可以同时获得索引和值。</span></span><br><span class="line">list1=[<span class="string">'哈'</span>,<span class="string">'哈哈'</span>,<span class="string">'哈哈哈'</span>,<span class="string">'哈哈哈哈'</span>]</span><br><span class="line"><span class="keyword">for</span> index,item <span class="keyword">in</span> enumerate(list1):</span><br><span class="line">     print(index,item)</span><br><span class="line"><span class="comment">#输出：</span></span><br><span class="line"><span class="number">0</span> 哈</span><br><span class="line"><span class="number">1</span> 哈哈</span><br><span class="line"><span class="number">2</span> 哈哈哈</span><br><span class="line"><span class="number">3</span> 哈哈哈哈</span><br><span class="line">同时enumerate还可以接受指定数值作为索引的起始值：</span><br><span class="line"><span class="keyword">for</span> index,item <span class="keyword">in</span> enumerate(list1,<span class="number">1</span>):</span><br><span class="line">     print(index,item)</span><br><span class="line"><span class="number">1</span> 哈</span><br><span class="line"><span class="number">2</span> 哈哈</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="comment">#统计大文本文件的行数：</span></span><br><span class="line">count=-<span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> index,line <span class="keyword">in</span> enumerate(open(file,<span class="string">'r'</span>)):</span><br><span class="line">     count+=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.nonzero(array)<span class="comment">#返回矩阵形式，元素是各个轴上的下标，出现的下标表示对应元素非零。</span></span><br><span class="line">a=np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>,<span class="number">4</span>)<span class="comment">#矩阵a有两个轴，轴的尺寸分别为4,3</span></span><br><span class="line">np.nonzero(a)<span class="comment">#因为有两个轴，返回一个元组，内涵两个元素，分别是不同轴非零元素下标。</span></span><br><span class="line"><span class="comment">#(array([0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2], dtype=int64), array([1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3], dtype=int64))</span></span><br><span class="line"><span class="comment">#元组的两个array元素尺寸都是11，表示原矩阵有11个非零元素。，第一个元素表示axis=0上，如果全是非零，则应该有4个0出现，这里只有3个，表示在axis=0上，第二个维度的第一行元素上有0出现，在对比元组的第二个array元素，发现第一个元素不是0，所以a[0][0]=0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.eye(n)<span class="comment">#尺寸为n的单位矩阵,多个参数用法：</span></span><br><span class="line"><span class="comment">#参数有两个的时候，第一个参数表示在axis=0轴上生成的尺寸，第二个参数表示axis=1上的尺寸</span></span><br><span class="line"><span class="comment">#参数有三个的时候，最后一个参数表示从index为propers3开始=1</span></span><br><span class="line">y=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">np.eye(<span class="number">5</span>)[y]<span class="comment">#返回一个5*5矩阵，每一行中，对应下标为[0,0,1,2,3]的元素为1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#数据元素位移：</span></span><br><span class="line">np.roll</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#列表的append和extend,非Numpy方法，内置的list</span></span><br><span class="line">a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">b=[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">a.append(b)</span><br><span class="line"><span class="comment">#返回[1,2,3,[4,5,6]]</span></span><br><span class="line">a.extend(b)</span><br><span class="line"><span class="comment">#返回[1,2,3,4,5,6]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">map函数，第一个参数是func方法名称，将至作用于之后的参数。</span><br><span class="line">map(float,x)<span class="comment">#将变量x的所有数据浮点转换。</span></span><br><span class="line"></span><br><span class="line">tolist()方法将array结构转换成list结构</span><br><span class="line"></span><br><span class="line"><span class="comment">#matrix形式的数据结构</span></span><br><span class="line">x.A 返回np.array格式</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.logical_and()接受两个参数，只要其中有一个参数是<span class="number">0</span>或者是<span class="keyword">False</span>，返回Fasle；否则返回<span class="keyword">True</span></span><br><span class="line">np.cov<span class="comment">#计算协方差矩阵，rowval参数指定是否将一行作为一个操作协方差的数据</span></span><br><span class="line">np.kinalg.eig<span class="comment">#返回特征值和特征矩阵</span></span><br><span class="line">np.isnan()<span class="comment">#参数如果是Nan，返回True否则返回False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.mat.I<span class="comment">#对于一个mat对象，他的I就是他的逆。注意的是，他本身也应该是</span></span><br><span class="line">print(...,end=<span class="string">''</span>)<span class="comment">#默认情况，print输出是换行的，也就是end='\n'，指定end=''不换行</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">str.strip()<span class="comment">#删除前后的空格</span></span><br><span class="line">str.lstrip()<span class="comment">#删除左边的空格</span></span><br><span class="line">str.rstrip()<span class="comment">#删除右边的空格</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">lambda</span> x:do x</span><br><span class="line"></span><br><span class="line">输入是x，得到返回的结果是do x之后的形式</span><br><span class="line"></span><br><span class="line">(<span class="keyword">lambda</span> x:[item <span class="keyword">for</span> item <span class="keyword">in</span> x <span class="keyword">if</span> item &gt;<span class="string">'a'</span>])([<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>])</span><br><span class="line">[<span class="string">'b'</span>,<span class="string">'c'</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># a是np.array形式</span></span><br><span class="line">a=np.array([[<span class="number">1</span>,<span class="number">3</span>],[<span class="number">2</span>,<span class="number">4</span>],[<span class="number">3</span>,<span class="number">5</span>]])</span><br><span class="line">a.flatten()<span class="comment">#flatten函数将所有数据变成一维数据，参数有'C','F','A','K'，默认是'C'，column形式展开,F是column形式展开</span></span><br><span class="line"><span class="comment"># 返回[1,3,2,4,3,5]</span></span><br><span class="line">a.flatten(<span class="string">'F'</span>)</span><br><span class="line"><span class="comment"># array([1, 2, 3, 3, 4, 5])</span></span><br><span class="line"><span class="string">'A'</span> means to flatten <span class="keyword">in</span> column-major  order <span class="keyword">if</span> `a` <span class="keyword">is</span> Fortran *contiguous* <span class="keyword">in</span> memory, row-major order otherwise.</span><br><span class="line"><span class="string">'K'</span> means to flatten  `a` <span class="keyword">in</span> the order the elements occur <span class="keyword">in</span> memory.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.ceil</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#对向量x中每个元素进行上取整</span></span><br><span class="line"></span><br><span class="line">x=np.array([<span class="number">2.</span> ,   <span class="number">3.</span> ,   <span class="number">4.</span> ,   <span class="number">5.</span> ,   <span class="number">6.</span> ,  <span class="number">12.7</span>,  -<span class="number">3.4</span>])</span><br><span class="line">np.cel(x)</span><br><span class="line">array([  <span class="number">2.</span>,   <span class="number">3.</span>,   <span class="number">4.</span>,   <span class="number">5.</span>,   <span class="number">6.</span>,  <span class="number">13.</span>,  -<span class="number">3.</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.fliplr</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#对向量中每行的元素进行翻转</span></span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>A = np.diag([<span class="number">1.</span>,<span class="number">2.</span>,<span class="number">3.</span>])</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>Aarray([   [ <span class="number">1.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],     </span><br><span class="line">               [ <span class="number">0.</span>,  <span class="number">2.</span>,  <span class="number">0.</span>],     </span><br><span class="line">               [ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">3.</span>]])</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>np.fliplr(A)</span><br><span class="line">array([</span><br><span class="line">               [ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">1.</span>],     </span><br><span class="line">               [ <span class="number">0.</span>,  <span class="number">2.</span>,  <span class="number">0.</span>],     </span><br><span class="line">               [ <span class="number">3.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>]])</span><br><span class="line"></span><br><span class="line">np.clip</span><br><span class="line"></span><br><span class="line"><span class="comment"># 范围切割，强制序列的最大最小值范围</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>x</span><br><span class="line">array([ <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">4</span>,  <span class="number">2</span>,  <span class="number">4</span>, <span class="number">10</span>])</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>np.clip(x,<span class="number">0</span>,<span class="number">6</span>)</span><br><span class="line">array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.where</span><br><span class="line"></span><br><span class="line">numpy.where(condition[, x, y])</span><br><span class="line"></span><br><span class="line">后面的x，y是可选参数。根据condition的值返回x和y元素。xy和condition的维度相同，如果condition中某个位置的值为true，返回x对应位置元素，否则返回y对用元素；如果只有condtion参数，则根据值返回为true的index</span><br><span class="line"></span><br><span class="line">np.where([[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>],[<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>]])</span><br><span class="line">(array([<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>], dtype=int64), array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>], dtype=int64))<span class="comment">#[0,1][0,2],[1,0],[1,1]4个元素值为true</span></span><br><span class="line">np.where([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">0</span>,-<span class="number">2</span>])</span><br><span class="line">(array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>], dtype=int64))</span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>np.where([[<span class="keyword">True</span>, <span class="keyword">False</span>], [<span class="keyword">True</span>, <span class="keyword">True</span>]],</span><br><span class="line"><span class="prompt">... </span>[[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]],</span><br><span class="line"><span class="prompt">... </span>[[<span class="number">9</span>, <span class="number">8</span>], [<span class="number">7</span>, <span class="number">6</span>]])</span><br><span class="line"></span><br><span class="line">array([[<span class="number">1</span>, <span class="number">8</span>],  </span><br><span class="line">       [<span class="number">3</span>, <span class="number">4</span>]])</span><br><span class="line"></span><br><span class="line">np.greater_equal/np.less</span><br><span class="line"></span><br><span class="line"><span class="comment">#比较函数</span></span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>x</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, -<span class="number">2</span>, -<span class="number">4</span>]</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>np.greater_equal(x,<span class="number">0</span>).astype(int)+np.less(x,<span class="number">0</span>).astype(int)*<span class="number">0.3</span></span><br><span class="line">array([ <span class="number">1.</span> ,  <span class="number">1.</span> ,  <span class="number">1.</span> ,  <span class="number">0.3</span>,  <span class="number">0.3</span>])</span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>np.greater_equal(x,<span class="number">0</span>)+np.less(x,<span class="number">0</span>)</span><br><span class="line">array([ <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>], dtype=bool)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.nan_to_num</span><br><span class="line"></span><br><span class="line"><span class="comment"># replace nan with zero and inf with finite numbers</span></span><br><span class="line"></span><br><span class="line">np.set_printoptions(precision=<span class="number">8</span>)</span><br><span class="line">x = np.array([np.inf, -np.inf, np.nan, -<span class="number">128</span>, <span class="number">128</span>])</span><br><span class="line">np.nan_to_num(x)</span><br><span class="line"></span><br><span class="line">array([ <span class="number">1.79769313e+308</span>,  -<span class="number">1.79769313e+308</span>,   <span class="number">0.00000000e+000</span>,  -<span class="number">1.28000000e+002</span>,   <span class="number">1.28000000e+002</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.random.binaoial</span><br><span class="line"></span><br><span class="line"><span class="comment">#二项分布采样函数，接受3个参数，n，p以及采样数量size，返回的数据是成功的次数，p为成功的概率，n为在几个源中采样</span></span><br><span class="line">binomial(n, p, size=<span class="keyword">None</span>)</span><br><span class="line"></span><br><span class="line">size=<span class="keyword">None</span>时候，默认返回一个single value</span><br><span class="line"></span><br><span class="line">np.random.binomial(<span class="number">1</span>,<span class="number">0.5</span>,<span class="number">10</span>)</span><br><span class="line"><span class="comment">#array([1, 0, 0, 0, 0, 0, 1, 1, 1, 0])</span></span><br><span class="line"></span><br><span class="line">上面使用二项分布做了一个mask生成器，<span class="number">0.5</span>的概率分别为<span class="number">1</span>或<span class="number">0</span></span><br><span class="line"></span><br><span class="line">np.random.binomial(<span class="number">2</span>,<span class="number">0.5</span>,<span class="number">10</span>)</span><br><span class="line"><span class="comment">#array([1, 0, 1, 1, 1, 0, 2, 1, 0, 0])</span></span><br><span class="line"></span><br><span class="line">上面的例子中，<span class="number">10</span>次采样，只有一次是两次都成功，采样的次数越多，结果与我们使用概率论直接计算的结果越接近</span><br><span class="line"></span><br><span class="line">sum(np.random.binomial(<span class="number">2</span>,<span class="number">0.5</span>,<span class="number">20000</span>)==<span class="number">0</span>)/<span class="number">20000</span></span><br><span class="line"><span class="comment">#0.25185000000000002</span></span><br><span class="line"></span><br><span class="line">sum(np.random.binomial(<span class="number">2</span>,<span class="number">0.5</span>,<span class="number">20000</span>)==<span class="number">2</span>)/<span class="number">20000</span></span><br><span class="line"><span class="comment">#0.24975</span></span><br><span class="line"></span><br><span class="line">上面中，类似抛硬币，都为正面或都为反面的概率都接近<span class="number">0.25</span></span><br><span class="line"></span><br><span class="line">size可以是array形式，返回的是array形式的array，array元素为二项分布的采样值</span><br><span class="line"></span><br><span class="line">np.random.binomial(<span class="number">1</span>,<span class="number">0.5</span>,[<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>])</span><br><span class="line">array([[[<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>],                    </span><br><span class="line">        [<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>],                    </span><br><span class="line">        [<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>]],                   </span><br><span class="line"></span><br><span class="line">       [[<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>],                    </span><br><span class="line">        [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>],                    </span><br><span class="line">        [<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>]],                   </span><br><span class="line"></span><br><span class="line">       [[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],                    </span><br><span class="line">        [<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],                    </span><br><span class="line">        [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>]]])                  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.rot90</span><br><span class="line">np.rot90(m,k=<span class="number">1</span>,axes=(<span class="number">0</span>,<span class="number">1</span>))</span><br><span class="line">将列表的元素在指定轴上旋转<span class="number">90</span>度。m为数组，至少两个维度；k为旋转<span class="number">90</span>度的次数；axes是旋转的方向，从第一个维度转换到第二个维度</span><br><span class="line"></span><br><span class="line">m=np.asarray([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>],[<span class="number">5</span>,<span class="number">6</span>]])</span><br><span class="line">np.rot90(m)                      </span><br><span class="line">array([[<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>],                    </span><br><span class="line">       [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>]])</span><br><span class="line"></span><br><span class="line">上式中，原本的维度是<span class="number">3</span>*<span class="number">2</span>，转换后变成<span class="number">2</span>*<span class="number">3</span>，效果与逆时针旋转<span class="number">90</span>°相同</span><br><span class="line"></span><br><span class="line">np.rot90(m,<span class="number">1</span>,(<span class="number">1</span>,<span class="number">0</span>))<span class="comment">#顺时针旋转90度</span></span><br><span class="line">array([[<span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>],</span><br><span class="line">       [<span class="number">6</span>, <span class="number">4</span>, <span class="number">2</span>]])</span><br><span class="line"></span><br><span class="line">np.rot90(m,-<span class="number">1</span>,(<span class="number">0</span>,<span class="number">1</span>))<span class="comment">#效果与上面相同</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.issubdtype</span><br><span class="line">numpy.issubdtype(arg1, arg2)</span><br><span class="line"></span><br><span class="line">Returns <span class="keyword">True</span> <span class="keyword">if</span> first argument <span class="keyword">is</span> a typecode lower/equal <span class="keyword">in</span> type hierarchy.</span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>np.issubdtype(<span class="string">'S1'</span>, str)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>np.issubdtype(np.float64, np.float32)</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.random.seed/np.random.shuffle</span><br><span class="line"></span><br><span class="line">np.random.seed(int)</span><br><span class="line"><span class="comment">#以int更新种子seed</span></span><br><span class="line"></span><br><span class="line">np.random.shuffle(x)</span><br><span class="line"><span class="comment">#对x序列打乱</span></span><br><span class="line"></span><br><span class="line">x1=np.arange(<span class="number">12</span>)</span><br><span class="line">x1</span><br><span class="line">array([ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">4</span>,  <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>,  <span class="number">8</span>,  <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>])</span><br><span class="line">x2=np.arange(<span class="number">12</span>)</span><br><span class="line">seed=np.random.seed(<span class="number">145</span>)</span><br><span class="line">np.random.seed(<span class="number">145</span>)</span><br><span class="line">np.random.shuffle(x1)</span><br><span class="line">x1</span><br><span class="line">array([ <span class="number">9</span>,  <span class="number">4</span>,  <span class="number">3</span>,  <span class="number">1</span>,  <span class="number">0</span>, <span class="number">10</span>,  <span class="number">8</span>,  <span class="number">2</span>,  <span class="number">7</span>,  <span class="number">6</span>, <span class="number">11</span>,  <span class="number">5</span>])</span><br><span class="line">np.random.seed(<span class="number">145</span>)</span><br><span class="line">np.random.shuffle(x2)</span><br><span class="line">x2</span><br><span class="line">array([ <span class="number">9</span>,  <span class="number">4</span>,  <span class="number">3</span>,  <span class="number">1</span>,  <span class="number">0</span>, <span class="number">10</span>,  <span class="number">8</span>,  <span class="number">2</span>,  <span class="number">7</span>,  <span class="number">6</span>, <span class="number">11</span>,  <span class="number">5</span>])</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>np.random.seed(<span class="number">15</span>)</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>x3=np.arange(<span class="number">12</span>)</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>np.random.shuffle(x3)</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>x3</span><br><span class="line">array([<span class="number">11</span>,  <span class="number">6</span>,  <span class="number">2</span>,  <span class="number">1</span>,  <span class="number">9</span>,  <span class="number">3</span>,  <span class="number">4</span>,  <span class="number">0</span>,  <span class="number">7</span>, <span class="number">10</span>,  <span class="number">5</span>,  <span class="number">8</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">np.transpose</span><br><span class="line"></span><br><span class="line"><span class="comment">#矩阵的转置操作</span></span><br><span class="line"></span><br><span class="line">x=np.arange(<span class="number">20</span>).reshape((<span class="number">2</span>,<span class="number">2</span>,<span class="number">5</span>))</span><br><span class="line">array([[[ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">4</span>],</span><br><span class="line">        [ <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>,  <span class="number">8</span>,  <span class="number">9</span>]],</span><br><span class="line">       [[<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>],</span><br><span class="line">        [<span class="number">15</span>, <span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>]]])</span><br><span class="line"></span><br><span class="line"><span class="comment">#对于元素8来说，他的索引为x[0,1,3]，在第一轴（axis=0）数值为0，第二个轴数值为1，第三个轴数值为3</span></span><br><span class="line"></span><br><span class="line">x.transpose((<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>))</span><br><span class="line">array([[[ <span class="number">0</span>, <span class="number">10</span>],        </span><br><span class="line">        [ <span class="number">1</span>, <span class="number">11</span>],        </span><br><span class="line">        [ <span class="number">2</span>, <span class="number">12</span>],        </span><br><span class="line">        [ <span class="number">3</span>, <span class="number">13</span>],        </span><br><span class="line">        [ <span class="number">4</span>, <span class="number">14</span>]],       </span><br><span class="line"></span><br><span class="line">       [[ <span class="number">5</span>, <span class="number">15</span>],        </span><br><span class="line">        [ <span class="number">6</span>, <span class="number">16</span>],        </span><br><span class="line">        [ <span class="number">7</span>, <span class="number">17</span>],        </span><br><span class="line">        [ <span class="number">8</span>, <span class="number">18</span>],        </span><br><span class="line">        [ <span class="number">9</span>, <span class="number">19</span>]]])</span><br><span class="line"></span><br><span class="line"><span class="comment">#现在将轴转置由（0,1,2）为（1,2,0），原来的元素8索引变为x[1,3,0]</span></span><br><span class="line">x.transpose((<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>))[<span class="number">1</span>,<span class="number">3</span>,<span class="number">0</span>]</span><br><span class="line"><span class="number">8</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">numpy求交集</span><br><span class="line"></span><br><span class="line">np.intersect1d(arr1,arr2)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/img/mp-qr.jpg" alt="clinjie wechat" style="width: 200px; max-width: 100%;"/>
+    <div>Think about u every day</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/09/aut/" rel="next" title="秋">
+                <i class="fa fa-chevron-left"></i> 秋
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+
+      <! -- 添加微信图标 -->
+	    
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+    <div class="comments" id="comments">
+       
+            <div id="uyan_frame"></div>
+       
+    </div>
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/avatar.jpg"
+               alt="clinjie" />
+          <p class="site-author-name" itemprop="name">clinjie</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">182</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/clinjie" target="_blank" title="github" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/chuangwalinjie" target="_blank" title="weibo" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/peihaozhu" target="_blank" title="zhihu" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">clinjie</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io" rel="external nofollow">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+    
+      
+    
+
+        <!-- UY BEGIN -->
+        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142203"></script>
+        <!-- UY END -->
+
+
+
+
+
+  
+
+
+
+
+	
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("BKt7qufuU6B0ix9a9ik7kejs-gzGzoHsz", "pfDjDmIpP09Fj9QNLGzSL2Ox");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+	
+	
+
+<!-- 页面点击小心心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+<!-- 颗粒漂浮背景 -->
+<script type="text/javascript" src="/js/src/particle.js"></script>
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="你要去哪里",clearTimeout(st)):(document.title="clinjie~~"+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},3e3))})</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}},"messageStyle":"none"});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
